@@ -14,7 +14,7 @@ public class NoteService {
 	Data data = new Data();
 	
 	public NoteService() {
-		data.getNotes().add(new Note("Premiere Note", LocalDate.now()));
+		data.getNotes().add(new Note(0, "Premiere Note", LocalDate.now()));
 	}
 	
 	public ArrayList<Note> getAllNotes(){
@@ -25,4 +25,16 @@ public class NoteService {
 		data.getNotes().add(noteToAdd);
 	}
 	
+	public void addNote(String content) {
+		data.getNotes().add(
+				new Note(data.getNotes().indexOf(data.getNotes().getLast())+1,
+				content, LocalDate.now()));
+	}
+	//creation d'une autre méthode add qui prend uniquement le content
+	//et qui créer une Note à partir de l'id libre dans de l'arrayList
+	//le content, et la date
+
+	public void deleteNoteById(int id) {
+		data.getNotes().remove(id);
+	}
 }

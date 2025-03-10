@@ -4,13 +4,15 @@ import java.time.LocalDate;
 
 public class Note {
 
+	private int id;
 	private String content;
 	private LocalDate date;
 		
 	public Note() {
 	}
 	
-	public Note(String content, LocalDate date) {
+	public Note(int id, String content, LocalDate date) {
+		this.id = id;
 		this.content = content;
 		this.date = date;
 	}
@@ -26,6 +28,14 @@ public class Note {
 	}
 	public void setDate(LocalDate date) {
 		this.date = date;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 	
