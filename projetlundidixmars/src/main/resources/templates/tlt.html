@@ -1,0 +1,11 @@
+BONJOUR!!!
+
+
+<ul th:each="note: ${listenotes}" >
+	<li th:text="${note.content} + ', ' + ${note.date}">
+</ul>
+
+<form action="/firsttlt" method="POST">
+	<input name="nomnote" type="text"/>
+	<input type="submit"/>
+</form>
