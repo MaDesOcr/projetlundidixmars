@@ -7,34 +7,32 @@ import org.springframework.stereotype.Service;
 
 import com.example.projetlundidixmars.data.Data;
 import com.example.projetlundidixmars.model.Note;
+import com.example.projetlundidixmars.repository.NoteRepository;
 
 @Service
 public class NoteService {
 
-	Data data = new Data();
+	NoteRepository noteRepository;	
 	
-	public NoteService() {
-		data.getNotes().add(new Note(0, "Premiere Note", LocalDate.now()));
+	public NoteService(NoteRepository noteRepository) {
+		this.noteRepository = noteRepository;
+		this.noteRepository.save(new Note(0, "Premiere Note", LocalDate.now()));
 	}
 	
 	public ArrayList<Note> getAllNotes(){
-		return data.getNotes();
+		return (ArrayList<Note>) noteRepository.findAll();
 	}
 	
 	public void addNote(Note noteToAdd) {
-		data.getNotes().add(noteToAdd);
+		this.noteRepository.save(noteToAdd);
 	}
 	
 	public void addNote(String content) {
-		data.getNotes().add(
-				new Note(data.getNotes().indexOf(data.getNotes().getLast())+1,
-				content, LocalDate.now()));
+		
+		this.noteRepository.save(new Note(content, LocalDate.now()));
 	}
-	//creation d'une autre méthode add qui prend uniquement le content
-	//et qui créer une Note à partir de l'id libre dans de l'arrayList
-	//le content, et la date
 
 	public void deleteNoteById(int id) {
-		data.getNotes().remove(id);
+		this.noteRepository.deleteById(id);
 	}
 }
