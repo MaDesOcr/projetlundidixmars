@@ -1,8 +1,11 @@
 package com.example.projetlundidixmars.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 
@@ -14,14 +17,18 @@ public class Auteur {
 	
 	private String nom;
 
-    @OneToMany(mappedBy = "createur")
-	private ArrayList<Note> notes = new ArrayList<Note>();
-	
-	
+    @OneToMany(mappedBy = "createur", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+	private List<Note> notes = new ArrayList<Note>();
 	
 	public Auteur() {
 		super();
 	}
+
+	public Auteur(String nom) {
+		super();
+		this.nom = nom;
+	}
+
 
 
 
@@ -48,6 +55,14 @@ public class Auteur {
 
 	public void setNom(String nom) {
 		this.nom = nom;
+	}
+
+	public List<Note> getNotes() {
+		return notes;
+	}
+
+	public void setNotes(ArrayList<Note> notes) {
+		this.notes = notes;
 	}
 	
 	

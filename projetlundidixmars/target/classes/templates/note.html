@@ -1,0 +1,16 @@
+<h1>BONJOUR!!!</h1>
+
+<ul th:each="note: ${listenotes}" >
+	<li> 	
+		<span th:text="${note.id} + ', ' + ${note.content} + ', ' + ${note.date}"></span>
+    	<form th:action="@{'/note/deletenote?id=' + ${note.id}}" method="post" style="display:inline;">
+            <input type="hidden" name="_method" value="DELETE"/>
+            <button type="submit">Supprimer</button>
+        </form>
+   	</li>
+</ul>
+
+<form action="/note/" method="POST">
+	<input name="nomnote" type="text"/>
+	<input type="submit"/>
+</form>

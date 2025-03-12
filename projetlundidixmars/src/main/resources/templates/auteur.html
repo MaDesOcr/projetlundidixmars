@@ -1,0 +1,10 @@
+<ul th:each="auteur: ${auteurs}" >
+	<li> 	
+		<span th:text="${auteur.id} + ', ' + ${auteur.nom}"></span>
+    <!-- 	<form th:action="@{'/deletetlt?id=' + ${note.id}}" method="post" style="display:inline;">
+            <input type="hidden" name="_method" value="DELETE"/>
+            <button type="submit">Supprimer</button>
+        </form>
+ -->    	
+  	</li>
+</ul>

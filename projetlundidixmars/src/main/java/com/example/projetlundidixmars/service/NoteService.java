@@ -2,6 +2,7 @@ package com.example.projetlundidixmars.service;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.stereotype.Service;
 
@@ -19,8 +20,8 @@ public class NoteService {
 		this.noteRepository.save(new Note(0, "Premiere Note", LocalDate.now()));
 	}
 	
-	public ArrayList<Note> getAllNotes(){
-		return (ArrayList<Note>) noteRepository.findAll();
+	public List<Note> getAllNotes(){
+		return noteRepository.findAll();
 	}
 	
 	public void addNote(Note noteToAdd) {
